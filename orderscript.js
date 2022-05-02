@@ -10,7 +10,7 @@ cont.addEventListener("click", function(event){
 	 document.getElementById("urn-info").style.display="flex";
 });
 
-for (let i = 0; i < 17; i++) {
+for (let i = 0; i < 18; i++) {
 	urn_list[i].addEventListener("click", function(event){
 		document.getElementById("chosen-name").innerHTML = urn_list[i].dataset.name;
 		document.getElementById("chosen-price").innerHTML = urn_list[i].dataset.price;
