@@ -17,6 +17,17 @@ for (let i = 0; i < 18; i++) {
 		document.getElementById("chosen-desc").innerHTML = urn_list[i].dataset.desc;
 		document.getElementById("chosen-image").src = urn_list[i].src;
 
+		if(urn_list[i].dataset.alt1) {
+			document.getElementById("urn-colors").innerHTML = 
+			`<img class="urn-color" src="${urn_list[i].dataset.alt1}" alt="Alternate Color">`;
+		} else {
+			document.getElementById("urn-colors").innerHTML = "";
+		}
+		if (urn_list[i].dataset.alt2) {
+			document.getElementById("urn-colors").innerHTML += 
+			`<img class="urn-color" src="${urn_list[i].dataset.alt2}" alt="Alternate Color">`;
+		}
+
 		document.getElementsByClassName("selected")[0].className = "urn-card";
 		urn_list[i].className="urn-card selected";
 
