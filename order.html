@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="orderstyle.css">
+
+</head>
+<body>
+	<div class="header">
+		<h3>Please provide some basic information so we can help you select an appropriate service package</h3>
+	</div>
+	<div class="frame">
+		<div class="message-box" id="services">
+			<h4>When will you require services?</h4>
+			<input type="radio" id="immediately" name="order_select" value="immediately">
+			<label for="immediately">Immediately - My loved one has passed</label><br>
+			<input type="radio" id="thirty" name="order_select" value="thirty">
+			<label for="thirty">My loved one is expected to pass in the next 30 days</label><br>
+			<input type="radio" id="preplan" name="order_select" value="preplan">
+			<label for="preplan">I am pre-planning for the future</label><br><br>
+			<a class="btn btn-primary" id="continue">Continue</a>
+		</div>
+
+		<div class="message-box" id="urns">
+			<h4>Select an urn by clicking an image below</h4>
+			<div class="urn-list">
+				<div class="urn-row">
+					<div class="urn">
+						<img class="urn-card selected" src="B-2480-A_Metallic_Blue_Urn.jpg" alt="B-2480-A-Metallic Urn"
+						data-name="B-2480-A-Metallic Urn"
+						data-price="$150"
+						data-desc="Classic Brass Cremation Urn with Three Rings. Threaded lid allows secure closure. Felt-lined base.">
+						<div class="urn-name">B-2480-A-Metallic Urn</div>
+						<div class="price">$150</div>
+					</div>
+					<div class="urn">
+						<img class="urn-card" src="Classic_Adult_Brass_Cremation_Urn_with_Black_Speckled_Finish_v2.jpg" alt="Classic Adult Brass Cremation Urn with Black Speckled Finish"
+						data-name="Classic Adult Brass Cremation Urn with Black Speckled Finish"
+						data-price="$125"
+						data-desc="Threaded lid allows secure closure. Felt-lined base.">
+						<div class="urn-name">Classic Adult Brass Cremation Urn with Black Speckled Finish</div>
+						<div class="price">$125</div>
+					</div>
+					<div class="urn">
+						<img class="urn-card" src="Affordable_Alloy_Cremation_Urn_in_with_Sunset_Design_v2.jpg" alt="Adult Alloy Cremation Urn with Sunset Design"
+						data-name="Adult Alloy Cremation Urn with Sunset Design"
+						data-price="$125"
+						data-desc="Lovely shade of oranges and reds protected with clear lacquered finish. Threaded lid allows secure closure. Felt-lined base.">
+						<div class="urn-name">Adult Alloy Cremation Urn with Sunset Design</div>
+						<div class="price">$125</div>
+					</div>
+				</div>
+				<div class="urn-row">
+					<div class="urn">
+						<img class="urn-card" src="Adult_Brass_Adult_Cremation_Urn_with_nickel_overlay_and_rust_red_enamel.jpg" alt="Adult Brass Adult Cremation Urn with Nickel Overlay and Rust Red Enamel"
+						data-name="Adult Brass Adult Cremation Urn with Nickel Overlay and Rust Red Enamel"
+						data-price="$125"
+						data-desc="Threaded lid allows secure closure. Felt-lined base.">
+						<div class="urn-name">Adult Brass Adult Cremation Urn with Nickel Overlay and Rust Red Enamel</div>
+						<div class="price">$125</div>
+					</div>
+					<div class="urn">
+						<img class="urn-card" src="Affordable_Alloy_Cremation_Urn_with_Doves_Design_v3.jpg" alt="Affordable Alloy Cremation Urn with Doves Design"
+						data-name="Affordable Alloy Cremation Urn with Doves Design"
+						data-price="$75"
+						data-desc="Affordable Alloy Adult Size Cremation Urn. Lovely shade of blue and white protected with clear lacquered finish. Threaded lid allows secure closure. Felt-lined base.">
+						<div class="urn-name">Affordable Alloy Cremation Urn with Doves Design</div>
+						<div class="price">$75</div>
+					</div>
+					<div class="urn">
+						<img class="urn-card" src="Solid_Brass_Urn_with_Brushed_Pewter_and_Heart_Design_B-8679-A.jpg" alt="Solid Brass Urn with Brushed Pewter and Heart Design (B-8679-A)"
+						data-name="Solid Brass Urn with Brushed Pewter and Heart Design (B-8679-A)"
+						data-price="$75"
+						data-desc="Solid Brass Urn with Brushed Pewter and Heart Design. Threaded lid for secure closure. Can be engraved on the back for an additional charge.">
+						<div class="urn-name">Solid Brass Urn with Brushed Pewter and Heart Design (B-8679-A)</div>
+						<div class="price">$75</div>
+					</div>
+				</div>
+				<div class="urn-row">
+					<div class="urn">
+						<img class="urn-card" src="Solid_Brass_Urn_with_Coppery_Brown_Finish_B-8537-A.jpg" alt="Solid Brass Urn with Coppery Brown Finish (B-8537-A)"
+						data-name="Solid Brass Urn with Coppery Brown Finish (B-8537-A)"
+						data-price="$75"
+						data-desc="Solid Brass Urn with Coppery Brown Finish. Threaded lid for secure closure.">
+						<div class="urn-name">Solid Brass Urn with Coppery Brown Finish (B-8537-A)</div>
+						<div class="price">$75</div>
+					</div>
+					<div class="urn">
+						<img class="urn-card" src="Biodegradable_Peaceful_Return_Urn_in_Heart_Shape_Natural_White_1060-HN.jpg" alt="Biodegradable Peaceful Return Urn in Heart Shape - Natural White (1060-HN)"
+						data-name="Biodegradable Peaceful Return Urn in Heart Shape - Natural White (1060-HN)"
+						data-price="$75"
+						data-desc="Peaceful Return Biodegradable Urns are made of hand-crafted papers and available in four sizes. Each urn includes a biodegradable bag, hemp rope, and a seeded paper leaf. The seeded hand-crafted leaf can be planted to yield wildflower blooms of remembrance. The urn can be buried or used as a scattering urn with the special spout design.">
+						<div class="urn-name">Biodegradable Peaceful Return Urn in Heart Shape - Natural White (1060-HN)</div>
+						<div class="price">$75</div>
+					</div>
+					<div class="urn">
+						<img class="urn-card" src="Affordable_Alloy_Cremation_Urn_in_Sapphire_Red_with_Pewter_Band_A-2116-A-R.jpg" alt="Affordable Alloy Cremation Urn in Sapphire Red with Pewter Band (A-2116-A-R)"
+						data-name="Affordable Alloy Cremation Urn in Sapphire Red with Pewter Band (A-2116-A-R)"
+						data-price="$75"
+						data-desc="Alloy Cremation Urn in Sapphire Red with Pewter Band. Threaded lid allows secure closure. Felt-lined base.">
+						<div class="urn-name">Affordable Alloy Cremation Urn in Sapphire Red with Pewter Band (A-2116-A-R)</div>
+						<div class="price">$75</div>
+					</div>
+				</div>
+				<div class="urn-row">
+					<div class="urn">
+						<img class="urn-card" src="Affordable_Alloy_Cremation_Urn_in_White_with_American_Bald_Eagle_and_Flag_Design_v2.jpg" alt="Affordable Alloy Cremation Urn in White with American Bald Eagle and Flag Design"
+						data-name="Affordable Alloy Cremation Urn in White with American Bald Eagle and Flag Design"
+						data-price="$75"
+						data-desc="Affordable Alloy Adult Size Cremation Urn. Lovely shade of white protected with clear lacquered finish. Threaded lid allows secure closure. Felt-lined base.">
+						<div class="urn-name">Affordable Alloy Cremation Urn in White with American Bald Eagle and Flag Design</div>
+						<div class="price">$75</div>
+					</div>
+					<div class="urn">
+						<img class="urn-card" src="American_Flag_White_Alloy_Urn2.jpg" alt="Affordable Alloy Cremation Urn in White with American Flag Design (A-4000-A-Af)"
+						data-name="Affordable Alloy Cremation Urn in White with American Flag Design (A-4000-A-Af)"
+						data-price="$75"
+						data-desc="Affordable Alloy Adult Size Cremation Urn. Lovely shade of white protected with clear lacquered finish. Threaded lid allows secure closure. Felt-lined base.">
+						<div class="urn-name">Affordable Alloy Cremation Urn in White with American Flag Design (A-4000-A-Af)</div>
+						<div class="price">$75</div>
+					</div>
+					<div class="urn">
+						<img class="urn-card" src="Brass_Cremation_Urn_in_White_with_Brass_Band_B-2257-A.jpg" alt="Brass Cremation Urn in White with Brass Band (B-2257-A)"
+						data-name="Brass Cremation Urn in White with Brass Band (B-2257-A)"
+						data-price="$75"
+						data-desc="Classic Brass Cremation Urn with Three Rings. Threaded lid allows secure closure. Felt-lined base.">
+						<div class="urn-name">Brass Cremation Urn in White with Brass Band (B-2257-A)</div>
+						<div class="price">$75</div>
+					</div>
+				</div>
+				<div class="urn-row">
+					<div class="urn">
+						<img class="urn-card" src="Classic_Brass_Cremation_Urn_in_Slate_Finish_B-1511-A-5.jpg" alt="Classic Brass Cremation Urn in Slate Finish (B-1511-A-5)"
+						data-name="Classic Brass Cremation Urn in Slate Finish (B-1511-A-5)"
+						data-price="$75"
+						data-desc="Adult Brass Cremation Urn in Slate. Threaded lid allows secure closure. Felt-lined base.">
+						<div class="urn-name">Classic Brass Cremation Urn in Slate Finish (B-1511-A-5)</div>
+						<div class="price">$75</div>
+					</div>
+					<div class="urn">
+						<img class="urn-card" src="Colonial_Urn_in_Black_Finish_A010-BLKl.jpg" alt="Colonial Urn in Black Finish (A010-BLKl)"
+						data-name="Colonial Urn in Black Finish (A010-BLKl)"
+						data-price="$75"
+						data-desc="High quality engineered wood urn with a capacity of 210 cu. in. Opens at base. Secured with four screws. Felt pads on corner. Brass plate can be added for an additional charge.">
+						<div class="urn-name">Colonial Urn in Black Finish (A010-BLKl)</div>
+						<div class="price">$75</div>
+					</div>
+					<div class="urn">
+						<img class="urn-card" src="Rosewood_Urn_with_Hand_Carved_Border.jpg" alt="Rosewood Urn with Hand-Carved Border"
+						data-name="Rosewood Urn with Hand-Carved Border"
+						data-price="$75"
+						data-desc="Simple yet elegant hand-carved rosewood sheesham urn. Made from solid rosewood. Secure closure with slide out base. Beautifully made.">
+						<div class="urn-name">Rosewood Urn with Hand-Carved Border</div>
+						<div class="price">$75</div>
+					</div>
+				</div>
+				<div class="urn-row">
+					<div class="urn">
+						<img class="urn-card" src="Rosewood_Urn_with_Hand_Carved_Tree_of_Life_V2.jpg" alt="Rosewood Urn with Hand-Carved Tree of Life"
+						data-name="Rosewood Urn with Hand-Carved Tree of Life"
+						data-price="$75"
+						data-desc="Hand-carved rosewood sheesham urn box with individually carved “Tree of Life” design. No two are exactly alike.">
+						<div class="urn-name">Rosewood Urn with Hand-Carved Tree of Life</div>
+						<div class="price">$75</div>
+					</div>
+					<div class="urn">
+						<img class="urn-card" src="Black_Plastic_Urn.jpg" alt="Black Plastic Temporary Urn"
+						data-name="Black Plastic Temporary Urn"
+						data-price="$0 (included in package)"
+						data-desc="">
+						<div class="urn-name">Black Plastic Temporary Urn</div>
+						<div class="price">$0 (included in package)</div>
+					</div>
+					<div class="urn">
+						<img class="urn-card" src="Tuscany_Cultured_Marble_Adult_Urn_Cherry_Red.jpg" alt="Tuscany Marble Urns"
+						data-name="Tuscany Marble Urns"
+						data-price="$175"
+						data-desc="">
+						<div class="urn-name">Tuscany Marble Urns</div>
+						<div class="price">$175</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="message-box" id="urn-info">
+			<div id="chosen-name">B-2480-A-Metallic Urn</div>
+			<div id="chosen-price">$150</div>
+			<div><img id="chosen-image" src="B-2480-A_Metallic_Blue_Urn.jpg" alt="B-2480-A-Metallic Urn"></div>
+			<a class="btn btn-primary" id="select-urn">SELECT</a>
+			<div id="urn-colors"></div>
+			<div id="chosen-desc">Classic Brass Cremation Urn with Three Rings. Threaded lid allows secure closure. Felt-lined base.</div>
+		</div>
+	</div>
+</body>
+<script src="orderscript.js"></script>
+</html>
