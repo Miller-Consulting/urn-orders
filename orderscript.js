@@ -19,5 +19,7 @@ for (let i = 0; i < 17; i++) {
 
 		document.getElementsByClassName("selected")[0].className = "urn-card";
 		urn_list[i].className="urn-card selected";
+
+		window.scrollTo({ top: 0, behavior: 'smooth' });
 	});
 }
