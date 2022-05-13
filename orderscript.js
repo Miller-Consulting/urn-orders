@@ -64,4 +64,9 @@ document.getElementById("select-urn").addEventListener("click", function(event){
 	document.getElementById("selected-urn").style.display="flex";
 	document.getElementById("selected-urn").innerHTML = 
 		`<img id="urn-thumbnail" src="${choice.image}"><div>${choice.name}</div><div>${choice.price}</div>`;
+
+	urn.style.display="none";
+	document.getElementById("urn-info").style.display="none";
+	document.getElementById("keepsakes").style.display="flex";
+	document.getElementById("keepsake-info").style.display="flex";
 });
