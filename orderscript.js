@@ -70,3 +70,42 @@ document.getElementById("select-urn").addEventListener("click", function(event){
 	document.getElementById("keepsakes").style.display="flex";
 	document.getElementById("keepsake-info").style.display="flex";
 });
+
+
+
+//quantity selector
+
+let input = document.querySelector('#qty');
+var btnminus = document.querySelector('.minusBtn');
+var btnplus = document.querySelector('.plusBtn');
+
+if (input !== undefined && btnminus !== undefined && btnplus !== undefined && input !== null && btnminus !== null && btnplus !== null) {
+	
+	var min = Number(input.getAttribute('min'));
+	var max = Number(input.getAttribute('max'));
+	var step = Number(input.getAttribute('step'));
+
+	function qtyminus(e) {
+		var current = Number(input.value);
+		var newval = (current - step);
+		if(newval < min) {
+			newval = min;
+		} else if(newval > max) {
+			newval = max;
+		} 
+		input.value = Number(newval);
+		e.preventDefault();
+	}
+
+	function qtyplus(e) {
+		var current = Number(input.value);
+		var newval = (current + step);
+		if(newval > max) newval = max;
+		input.value = Number(newval);
+		e.preventDefault();
+	}
+		
+	btnminus.addEventListener('click', qtyminus);
+	btnplus.addEventListener('click', qtyplus);
+  
+} // End if test

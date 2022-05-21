@@ -244,9 +244,9 @@
 .quantity {
   display: flex;
   border: 1px solid rgba(0,0,0,0.5);
-  width: 44%;
   border-radius: 0.25rem;
   height: 30px;
+  justify-content: center;
 }
 
 .minusBtn {
@@ -264,6 +264,7 @@
   color: rgba(0,0,0,0.5);
   cursor: pointer;
   outline: none;
+  user-select:none
 }
 
 .plusBtn {
@@ -281,6 +282,7 @@
   color: rgba(0,0,0,0.5);
   cursor: pointer;
   outline: none;
+  user-select:none
 }
 
 @media (max-width: 1200px) {
