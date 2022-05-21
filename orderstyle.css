@@ -20,7 +20,7 @@
   align-items: center;
 }
 
-.price {
+.price, .keepsake-price {
   font-size: 14px;
   text-align: center;
 }

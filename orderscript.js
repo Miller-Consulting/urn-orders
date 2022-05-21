@@ -1,9 +1,13 @@
 const cont = document.getElementById("continue");
 const urn = document.getElementById("urns");
 const urn_list = document.getElementsByClassName("urn-card");
+const keep_list = document.getElementsByClassName("keepsake-card");
 const services = document.getElementById("services");
 const colors = document.getElementsByClassName("urn-color");
 let color_number = 0;
+let keepCount = 0;
+
+
 
 cont.addEventListener("click", function(event){
 	services.style.display="none";
@@ -12,12 +16,13 @@ cont.addEventListener("click", function(event){
 	document.getElementById("urn-info").style.display="flex";
 });
 
-for (let i = 0; i < 18; i++) {
+//urn select
+for (let i = 0; i < urn_list.length; i++) {
 	urn_list[i].addEventListener("click", function(event){
 		document.getElementById("chosen-name").innerHTML = urn_list[i].dataset.name;
-		document.getElementById("chosen-price").innerHTML = urn_list[i].dataset.price,
-		document.getElementById("chosen-desc").innerHTML = urn_list[i].dataset.desc,
-		document.getElementById("chosen-image").src = urn_list[i].src,
+		document.getElementById("chosen-price").innerHTML = urn_list[i].dataset.price;
+		document.getElementById("chosen-desc").innerHTML = urn_list[i].dataset.desc;
+		document.getElementById("chosen-image").src = urn_list[i].src;
 
 		document.getElementsByClassName("selected")[0].className = "urn-card";
 		urn_list[i].className="urn-card selected";
@@ -39,8 +44,8 @@ for (let i = 0; i < 18; i++) {
 			colors[j].addEventListener("click", function(event){
 				document.getElementById("chosen-image").src = colors[j].src;
 				color_number = j+1;
-		});
-	}
+			});
+		}
 
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	});
@@ -72,9 +77,32 @@ document.getElementById("select-urn").addEventListener("click", function(event){
 });
 
 
+//keepsake chooser
+for (let i = 0; i < keep_list.length; i++) {
+	keep_list[i].addEventListener("click", function(event){
+		document.getElementById("keepsake-name").innerHTML = document.getElementsByClassName("keepsake-name")[i].innerHTML;
+		document.getElementById("keepsake-price").innerHTML = document.getElementsByClassName("keepsake-price")[i].innerHTML;
+		document.getElementById("keepsake-image").src = keep_list[i].src;
+
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
+}
+
+document.getElementById("select-keepsake").addEventListener("click", function(event){
+	choice[`keepsake${keepCount}`] = {
+		name: document.getElementById("keepsake-name").innerHTML,
+		price: document.getElementById("keepsake-price").innerHTML,
+		image: document.getElementById("keepsake-image").src
+	};
+
+	document.getElementById("keepsake-list").innerHTML = 
+		`<img class="keepsake-list-thumbnail" src="${choice.keepsake${keepCount}.image}"><div>${document.getElementById("keepsake-name").innerHTML}</div>
+		<div>${document.getElementById("keepsake-price").innerHTML}</div>`;
+
+	keepCount++;
+});
 
 //quantity selector
-
 let input = document.querySelector('#qty');
 var btnminus = document.querySelector('.minusBtn');
 var btnplus = document.querySelector('.plusBtn');
