@@ -96,7 +96,7 @@ document.getElementById("select-keepsake").addEventListener("click", function(ev
 	};
 
 	document.getElementById("keepsake-list").innerHTML = 
-		`<img class="keepsake-list-thumbnail" src="${choice.keepsake${keepCount}.image}"><div>${document.getElementById("keepsake-name").innerHTML}</div>
+		`<img class="keepsake-list-thumbnail" src="${document.getElementById("keepsake-image").src}"><div>${document.getElementById("keepsake-name").innerHTML}</div>
 		<div>${document.getElementById("keepsake-price").innerHTML}</div>`;
 
 	keepCount++;
