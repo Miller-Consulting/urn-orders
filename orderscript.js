@@ -67,8 +67,20 @@ document.getElementById("select-urn").addEventListener("click", function(event){
 		color: color_number
 	}
 	document.getElementById("selected-urn").style.display="flex";
-	document.getElementById("selected-urn").innerHTML = 
-		`<img id="urn-thumbnail" src="${choice.image}"><div>${choice.name}</div><div>${choice.price}</div>`;
+
+	let img = document.createElement("img",{"id":"urn-thumbnail", "src":choice.image});
+	img.setAttribute("id","urn-thumbnail");
+	img.setAttribute("src",choice.image);
+
+	let nameDiv = document.createElement("div");
+	nameDiv.innerHTML = choice.name;
+
+	let priceDiv = document.createElement("div");
+	priceDiv.innerHTML = choice.price;
+
+	document.getElementById("selected-urn").prepend(priceDiv);
+	document.getElementById("selected-urn").prepend(nameDiv);
+	document.getElementById("selected-urn").prepend(img);
 
 	urn.style.display="none";
 	document.getElementById("urn-info").style.display="none";
@@ -89,6 +101,7 @@ for (let i = 0; i < keep_list.length; i++) {
 }
 
 document.getElementById("select-keepsake").addEventListener("click", function(event){
+
 	choice[`keepsake${keepCount}`] = {
 		name: document.getElementById("keepsake-name").innerHTML,
 		price: document.getElementById("keepsake-price").innerHTML,
@@ -98,6 +111,8 @@ document.getElementById("select-keepsake").addEventListener("click", function(ev
 	document.getElementById("keepsake-list").innerHTML = 
 		`<img class="keepsake-list-thumbnail" src="${document.getElementById("keepsake-image").src}"><div>${document.getElementById("keepsake-name").innerHTML}</div>
 		<div>${document.getElementById("keepsake-price").innerHTML}</div>`;
+
+	document.getElementById("keepsake-list").style.display = "flex";
 
 	keepCount++;
 });
