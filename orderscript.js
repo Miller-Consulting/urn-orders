@@ -107,39 +107,56 @@ for (let i = 0; i < keep_list.length; i++) {
 
 document.getElementById("select-keepsake").addEventListener("click", function(event){
 
-	choice[`keepsake${keepCount}`] = {
+
+	choice[keepCount] = {
 		name: document.getElementById("keepsake-name").innerHTML,
 		price: document.getElementById("keepsake-price").innerHTML,
 		image: document.getElementById("keepsake-image").src,
 		quantity: document.getElementById("qty").value
 	};
 
-	let xButton = document.createElement("div");
-	xButton.setAttribute("class", "x-button")
-	xButton.innerHTML = "&#10006;";
+	keepCount++;
+		document.getElementById("keepsake-list").innerHTML = "";
 
-	let img = document.createElement("img");
-	img.setAttribute("class","keepsake-list-thumbnail");
-	img.setAttribute("src",document.getElementById("keepsake-image").src);
 
-	let nameDiv = document.createElement("div");
-	nameDiv.innerHTML = document.getElementById("keepsake-name").innerHTML;
+	for(let i = 0; i < keepCount; i++) {
 
-	let priceDiv = document.createElement("div");
-	priceDiv.innerHTML = document.getElementById("keepsake-price").innerHTML;
 
-	let qtyDiv = document.createElement("div");
-	qtyDiv.innerHTML = document.getElementById("qty").value;
+		let keepsakeRow = document.createElement("div");
+		keepsakeRow.setAttribute("class", "keepsake-row");
 
-	document.getElementById("keepsake-list").append(xButton);
-	document.getElementById("keepsake-list").append(img);
-	document.getElementById("keepsake-list").append(nameDiv);
-	document.getElementById("keepsake-list").append(priceDiv);
-	document.getElementById("keepsake-list").append(qtyDiv);
+		let xButton = document.createElement("div");
+		xButton.setAttribute("class", "x-button")
+		xButton.setAttribute("id", `x-button-${i}`)
+		xButton.innerHTML = "&#10006;";
+
+		let img = document.createElement("img");
+		img.setAttribute("class","keepsake-list-thumbnail");
+		img.setAttribute("src",choice[i].image);
+
+		let nameDiv = document.createElement("div");
+		nameDiv.innerHTML = choice[i].name;
+
+		let priceDiv = document.createElement("div");
+		priceDiv.innerHTML = choice[i].price;
+
+		let qtyDiv = document.createElement("div");
+		qtyDiv.innerHTML = choice[i].quantity;
+
+		keepsakeRow.append(xButton);
+		keepsakeRow.append(img);
+		keepsakeRow.append(nameDiv);
+		keepsakeRow.append(priceDiv);
+		keepsakeRow.append(qtyDiv);
+
+		document.getElementById("keepsake-list").append(keepsakeRow);
+	}
 
 	document.getElementById("keepsake-list").style.display = "flex";
-
-	keepCount++;
+	let scrollOffset = document.getElementById("keepsake-info").offsetHeight + 
+							document.getElementById("selected-urn").offsetHeight +
+							document.getElementById("keepsake-list").offsetHeight;
+	window.scrollTo({ top: scrollOffset, behavior: 'smooth' });
 });
 
 //quantity selector
