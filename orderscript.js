@@ -68,7 +68,11 @@ document.getElementById("select-urn").addEventListener("click", function(event){
 	}
 	document.getElementById("selected-urn").style.display="flex";
 
-	let img = document.createElement("img",{"id":"urn-thumbnail", "src":choice.image});
+	let xButton = document.createElement("div");
+	xButton.setAttribute("class", "x-button")
+	xButton.innerHTML = "&#10006;";
+
+	let img = document.createElement("img");
 	img.setAttribute("id","urn-thumbnail");
 	img.setAttribute("src",choice.image);
 
@@ -78,9 +82,10 @@ document.getElementById("select-urn").addEventListener("click", function(event){
 	let priceDiv = document.createElement("div");
 	priceDiv.innerHTML = choice.price;
 
-	document.getElementById("selected-urn").prepend(priceDiv);
-	document.getElementById("selected-urn").prepend(nameDiv);
-	document.getElementById("selected-urn").prepend(img);
+	document.getElementById("selected-urn").append(xButton);
+	document.getElementById("selected-urn").append(img);
+	document.getElementById("selected-urn").append(nameDiv);
+	document.getElementById("selected-urn").append(priceDiv);
 
 	urn.style.display="none";
 	document.getElementById("urn-info").style.display="none";
@@ -105,12 +110,32 @@ document.getElementById("select-keepsake").addEventListener("click", function(ev
 	choice[`keepsake${keepCount}`] = {
 		name: document.getElementById("keepsake-name").innerHTML,
 		price: document.getElementById("keepsake-price").innerHTML,
-		image: document.getElementById("keepsake-image").src
+		image: document.getElementById("keepsake-image").src,
+		quantity: document.getElementById("qty").value
 	};
 
-	document.getElementById("keepsake-list").innerHTML = 
-		`<img class="keepsake-list-thumbnail" src="${document.getElementById("keepsake-image").src}"><div>${document.getElementById("keepsake-name").innerHTML}</div>
-		<div>${document.getElementById("keepsake-price").innerHTML}</div>`;
+	let xButton = document.createElement("div");
+	xButton.setAttribute("class", "x-button")
+	xButton.innerHTML = "&#10006;";
+
+	let img = document.createElement("img");
+	img.setAttribute("class","keepsake-list-thumbnail");
+	img.setAttribute("src",document.getElementById("keepsake-image").src);
+
+	let nameDiv = document.createElement("div");
+	nameDiv.innerHTML = document.getElementById("keepsake-name").innerHTML;
+
+	let priceDiv = document.createElement("div");
+	priceDiv.innerHTML = document.getElementById("keepsake-price").innerHTML;
+
+	let qtyDiv = document.createElement("div");
+	qtyDiv.innerHTML = document.getElementById("qty").value;
+
+	document.getElementById("keepsake-list").append(xButton);
+	document.getElementById("keepsake-list").append(img);
+	document.getElementById("keepsake-list").append(nameDiv);
+	document.getElementById("keepsake-list").append(priceDiv);
+	document.getElementById("keepsake-list").append(qtyDiv);
 
 	document.getElementById("keepsake-list").style.display = "flex";
 
