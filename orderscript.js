@@ -106,8 +106,6 @@ for (let i = 0; i < keep_list.length; i++) {
 }
 
 document.getElementById("select-keepsake").addEventListener("click", function(event){
-
-
 	choice[keepCount] = {
 		name: document.getElementById("keepsake-name").innerHTML,
 		price: document.getElementById("keepsake-price").innerHTML,
@@ -116,48 +114,63 @@ document.getElementById("select-keepsake").addEventListener("click", function(ev
 	};
 
 	keepCount++;
-		document.getElementById("keepsake-list").innerHTML = "";
+	document.getElementById("keepsake-list").innerHTML = "";
 
 
 	for(let i = 0; i < keepCount; i++) {
 
+		if(choice[i]) {
+			let keepsakeRow = document.createElement("div");
+			keepsakeRow.setAttribute("class", "keepsake-row");
+			keepsakeRow.setAttribute("data-keepsake-number", i);
 
-		let keepsakeRow = document.createElement("div");
-		keepsakeRow.setAttribute("class", "keepsake-row");
+			let xButton = document.createElement("div");
+			xButton.setAttribute("class", "x-button");
+			xButton.innerHTML = "&#10006;";
+			xButton.addEventListener("click", function(){
+					let keepsake = document.querySelector(`[data-keepsake-number="${i}"`);
+					if (keepsake) {
+						keepsake.remove();
+						delete choice[i];
+						keepCount--;
+						window.scrollTo({ top: scrollOffset, behavior: 'smooth' });
+					}
+					if(keepCount==0) {
+						document.getElementById("keepsake-list").style.display = "none";
+					}
+			});
 
-		let xButton = document.createElement("div");
-		xButton.setAttribute("class", "x-button")
-		xButton.setAttribute("id", `x-button-${i}`)
-		xButton.innerHTML = "&#10006;";
+			let img = document.createElement("img");
+			img.setAttribute("class","keepsake-list-thumbnail");
+			img.setAttribute("src",choice[i].image);
 
-		let img = document.createElement("img");
-		img.setAttribute("class","keepsake-list-thumbnail");
-		img.setAttribute("src",choice[i].image);
+			let nameDiv = document.createElement("div");
+			nameDiv.innerHTML = choice[i].name;
 
-		let nameDiv = document.createElement("div");
-		nameDiv.innerHTML = choice[i].name;
+			let priceDiv = document.createElement("div");
+			priceDiv.innerHTML = choice[i].price;
 
-		let priceDiv = document.createElement("div");
-		priceDiv.innerHTML = choice[i].price;
+			let qtyDiv = document.createElement("div");
+			qtyDiv.innerHTML = choice[i].quantity;
 
-		let qtyDiv = document.createElement("div");
-		qtyDiv.innerHTML = choice[i].quantity;
+			keepsakeRow.append(xButton);
+			keepsakeRow.append(img);
+			keepsakeRow.append(nameDiv);
+			keepsakeRow.append(priceDiv);
+			keepsakeRow.append(qtyDiv);
 
-		keepsakeRow.append(xButton);
-		keepsakeRow.append(img);
-		keepsakeRow.append(nameDiv);
-		keepsakeRow.append(priceDiv);
-		keepsakeRow.append(qtyDiv);
-
-		document.getElementById("keepsake-list").append(keepsakeRow);
+			document.getElementById("keepsake-list").append(keepsakeRow);
+		}
 	}
 
 	document.getElementById("keepsake-list").style.display = "flex";
 	let scrollOffset = document.getElementById("keepsake-info").offsetHeight + 
-							document.getElementById("selected-urn").offsetHeight +
-							document.getElementById("keepsake-list").offsetHeight;
+							document.getElementById("selected-urn").offsetHeight;
 	window.scrollTo({ top: scrollOffset, behavior: 'smooth' });
 });
+
+
+
 
 //quantity selector
 let input = document.querySelector('#qty');
