@@ -8,12 +8,22 @@ let color_number = 0;
 let keepCount = 0;
 
 
+let choice = {};
+
 
 cont.addEventListener("click", function(event){
-	services.style.display="none";
-	urn.style.display="flex";
-	document.getElementsByClassName("header")[0].style.display="none";
-	document.getElementById("urn-info").style.display="flex";
+	let selections = document.getElementsByName("order_select");
+
+	for(i = 0; i < selections.length; i++) {
+		if(selections[i].checked) {
+			choice.order = selections[i].value;
+
+			services.style.display="none";
+			urn.style.display="flex";
+			document.getElementsByClassName("header")[0].style.display="none";
+			document.getElementById("urn-info").style.display="flex";
+		}
+	}
 });
 
 //urn select
@@ -59,13 +69,13 @@ for(let j = 0; j < colors.length; j++) {
 }
 
 document.getElementById("select-urn").addEventListener("click", function(event){
-	choice = {
-		name: document.getElementById("chosen-name").innerHTML,
-		price: document.getElementById("chosen-price").innerHTML,
-		desc: document.getElementById("chosen-desc").innerHTML,
-		image: document.getElementById("chosen-image").src,
-		color: color_number
-	}
+	
+	choice.name = document.getElementById("chosen-name").innerHTML;
+	choice.price = document.getElementById("chosen-price").innerHTML;
+	choice.desc = document.getElementById("chosen-desc").innerHTML;
+	choice.image = document.getElementById("chosen-image").src;
+	choice.color = color_number;
+
 	document.getElementById("selected-urn").style.display="flex";
 
 	let xButton = document.createElement("div");
@@ -128,16 +138,16 @@ document.getElementById("select-keepsake").addEventListener("click", function(ev
 			xButton.setAttribute("class", "x-button");
 			xButton.innerHTML = "&#10006;";
 			xButton.addEventListener("click", function(){
-					let keepsake = document.querySelector(`[data-keepsake-number="${i}"`);
-					if (keepsake) {
-						keepsake.remove();
-						delete choice[i];
-						keepCount--;
-						window.scrollTo({ top: scrollOffset, behavior: 'smooth' });
-					}
-					if(keepCount==0) {
-						document.getElementById("keepsake-list").style.display = "none";
-					}
+				let keepsake = document.querySelector(`[data-keepsake-number="${i}"`);
+				if (keepsake) {
+					keepsake.remove();
+					choice[i] = "";
+					window.scrollTo({ top: scrollOffset, behavior: 'smooth' });
+				}
+				if (document.getElementsByClassName("keepsake-row").length == 0) {
+					document.getElementById("keepsake-list").style.display = "none";
+					window.scrollTo({ top: 0, behavior: 'smooth' });	
+				}
 			});
 
 			let img = document.createElement("img");
