@@ -69,7 +69,8 @@ for(let j = 0; j < colors.length; j++) {
 }
 
 document.getElementById("select-urn").addEventListener("click", function(event){
-	
+	window.scrollTo({ top: 0, behavior: 'smooth' });
+
 	choice.name = document.getElementById("chosen-name").innerHTML;
 	choice.price = document.getElementById("chosen-price").innerHTML;
 	choice.desc = document.getElementById("chosen-desc").innerHTML;
@@ -80,6 +81,17 @@ document.getElementById("select-urn").addEventListener("click", function(event){
 
 	let xButton = document.createElement("div");
 	xButton.setAttribute("class", "x-button")
+	xButton.addEventListener("click", function(){
+		document.getElementById("selected-urn").style.display="none";
+		document.getElementById("keepsakes").style.display="none";
+		document.getElementById("keepsake-info").style.display="none";
+
+		urn.style.display="flex";
+		document.getElementById("urn-info").style.display="flex";
+		document.getElementById("selected-urn").innerHTML = "";
+
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
 	xButton.innerHTML = "&#10006;";
 
 	let img = document.createElement("img");
@@ -101,6 +113,7 @@ document.getElementById("select-urn").addEventListener("click", function(event){
 	document.getElementById("urn-info").style.display="none";
 	document.getElementById("keepsakes").style.display="flex";
 	document.getElementById("keepsake-info").style.display="flex";
+	document.getElementById("complete-order").style.display="block";
 });
 
 
@@ -150,6 +163,9 @@ document.getElementById("select-keepsake").addEventListener("click", function(ev
 				}
 			});
 
+			let div = document.createElement("div");
+			div.setAttribute("class", "keepsake-list-card");
+
 			let img = document.createElement("img");
 			img.setAttribute("class","keepsake-list-thumbnail");
 			img.setAttribute("src",choice[i].image);
@@ -161,13 +177,27 @@ document.getElementById("select-keepsake").addEventListener("click", function(ev
 			priceDiv.innerHTML = choice[i].price;
 
 			let qtyDiv = document.createElement("div");
-			qtyDiv.innerHTML = choice[i].quantity;
+			qtyDiv.innerHTML = "x" + choice[i].quantity;
+
+			let totalCostDiv = document.createElement("div");
+			totalCostDiv.setAttribute("class", "total-cost-card");
+
+			let totalDiv = document.createElement("div");
+			totalDiv.setAttribute("id", "total-cost");
+			totalDiv.innerHTML = "Total cost:"
+
+			let costDiv = document.createElement("div");
+			costDiv.innerHTML = "$"+parseInt(choice[i].price.replace(/\D/g, ""))*choice[i].quantity;
 
 			keepsakeRow.append(xButton);
-			keepsakeRow.append(img);
-			keepsakeRow.append(nameDiv);
+			div.append(img);
+			div.append(nameDiv);
+			keepsakeRow.append(div);
 			keepsakeRow.append(priceDiv);
 			keepsakeRow.append(qtyDiv);
+			totalCostDiv.append(totalDiv);
+			totalCostDiv.append(costDiv);
+			keepsakeRow.append(totalCostDiv);
 
 			document.getElementById("keepsake-list").append(keepsakeRow);
 		}
@@ -178,7 +208,6 @@ document.getElementById("select-keepsake").addEventListener("click", function(ev
 							document.getElementById("selected-urn").offsetHeight;
 	window.scrollTo({ top: scrollOffset, behavior: 'smooth' });
 });
-
 
 
 
