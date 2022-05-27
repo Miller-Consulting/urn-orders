@@ -90,6 +90,10 @@ document.getElementById("select-urn").addEventListener("click", function(event){
 		document.getElementById("urn-info").style.display="flex";
 		document.getElementById("selected-urn").innerHTML = "";
 
+		document.getElementById("final-order").innerHTML = ""
+		document.getElementById("final-order").style.display = "none";
+		document.getElementById("confirm-order").style.display = "none";
+
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	});
 	xButton.innerHTML = "&#10006;";
@@ -161,6 +165,10 @@ document.getElementById("select-keepsake").addEventListener("click", function(ev
 					document.getElementById("keepsake-list").style.display = "none";
 					window.scrollTo({ top: 0, behavior: 'smooth' });	
 				}
+				document.getElementById("final-order").innerHTML = ""
+				document.getElementById("final-order").style.display = "none";
+				document.getElementById("confirm-order").style.display = "none";
+				document.getElementById("complete-order").style.display="block";
 			});
 
 			let div = document.createElement("div");
@@ -205,11 +213,70 @@ document.getElementById("select-keepsake").addEventListener("click", function(ev
 
 	document.getElementById("keepsake-list").style.display = "flex";
 	let scrollOffset = document.getElementById("keepsake-info").offsetHeight + 
-							document.getElementById("selected-urn").offsetHeight;
+						document.getElementById("selected-urn").offsetHeight;
 	window.scrollTo({ top: scrollOffset, behavior: 'smooth' });
 });
 
+document.getElementById("complete-order").addEventListener("click", function(){
+	document.getElementById("complete-order").style.display="none";
 
+	let final = document.getElementById("final-order");
+
+	let table = document.createElement("table");
+	table.setAttribute("class", "order-table");
+
+	let thead = document.createElement("thead");
+	thead.innerHTML = "<tr>" +
+						"<th>Name</th>" +
+						"<th>Price</th>" +
+						"<th>Quantity</th>" +
+						"<th>Total Cost</th>" +
+						"</tr>";
+
+	let tbody = document.createElement("tbody");
+
+	let urnTr = document.createElement("tr");
+	urnTr.innerHTML = `<td>${choice.name}</td>
+						<td>${choice.price}</td>
+						<td>1</td>
+						<td>${choice.price}</td>`;
+
+	tbody.append(urnTr);
+
+	let sumTotal = parseInt(choice.price.replace(/\D/g, ""));
+
+	for(let i = 0; i < keepCount; i++) {
+		if(choice[i]) {
+			let tempTr = document.createElement("tr");
+			tempTr.innerHTML = `<td>${choice[i].name}</td>
+								<td>${choice[i].price}</td>
+								<td>${choice[i].quantity}</td>
+								<td>$${parseInt(choice[i].price.replace(/\D/g, ""))*choice[i].quantity}</td>`;
+
+			sumTotal += parseInt(choice.price.replace(/\D/g, ""));
+
+			tbody.append(tempTr);
+		}
+	}
+
+	let subtotal = document.createElement("div");
+	subtotal.setAttribute("id", "subtotal");
+	subtotal.innerHTML = `<div>Subtotal:</div><div>$${sumTotal}</div>`;
+
+	table.append(thead);
+	table.append(tbody);
+	final.append(table);
+	final.append(subtotal);
+	final.style.display = "flex";
+
+	document.getElementById("confirm-order").style.display = "block";
+
+	let scrollOffset = document.getElementById("keepsake-info").offsetHeight + 
+						document.getElementById("selected-urn").offsetHeight +
+						document.getElementById("keepsake-list").offsetHeight +
+						document.getElementById("complete-order").offsetHeight;
+	window.scrollTo({ top: scrollOffset, behavior: 'smooth' });
+});
 
 //quantity selector
 let input = document.querySelector('#qty');

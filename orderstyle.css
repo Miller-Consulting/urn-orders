@@ -224,6 +224,7 @@
 
 #final-order {
   display: none;
+  align-items: stretch;
 }
 
 .btn {
@@ -300,6 +301,15 @@
   justify-content: center;
 }
 
+#subtotal {
+  display: flex;
+  justify-content: end;
+  gap: 5vw;
+  padding: 20px 20px 0px 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .minusBtn {
   height: 43px;
   width: 43px;
@@ -334,6 +344,27 @@
   cursor: pointer;
   outline: none;
   user-select:none
+}
+
+.order-table {
+    border: solid 1px #613f6d;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.order-table thead th {
+    background-color: #896297;
+    border: solid 1px #613f6d;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+}
+.order-table tbody td {
+    border: solid 1px #613f6d;
+    color: #000;
+    padding: 10px;
+}
+.order-table tr:first-child {
+    font-weight: bold;
 }
 
 @media (max-width: 1200px) {
