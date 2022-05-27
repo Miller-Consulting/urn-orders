@@ -93,6 +93,8 @@ document.getElementById("select-urn").addEventListener("click", function(event){
 		document.getElementById("final-order").innerHTML = ""
 		document.getElementById("final-order").style.display = "none";
 		document.getElementById("confirm-order").style.display = "none";
+		document.getElementById("complete-order").style.display="none";
+
 
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	});
@@ -259,7 +261,7 @@ document.getElementById("complete-order").addEventListener("click", function(){
 								<td>${choice[i].quantity}</td>
 								<td>$${parseInt(choice[i].price.replace(/\D/g, ""))*choice[i].quantity}</td>`;
 
-			sumTotal += parseInt(choice.price.replace(/\D/g, ""));
+			sumTotal += parseInt(choice.price.replace(/\D/g, "")*choice[i].quantity);
 
 			tbody.append(tempTr);
 		}
