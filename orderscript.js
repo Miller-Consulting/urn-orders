@@ -212,8 +212,14 @@ document.getElementById("select-keepsake").addEventListener("click", function(ev
 	}
 
 	document.getElementById("keepsake-list").style.display = "flex";
+	document.getElementById("final-order").innerHTML = ""
+	document.getElementById("final-order").style.display = "none";
+	document.getElementById("confirm-order").style.display = "none";
+	document.getElementById("complete-order").style.display="block";
+
 	let scrollOffset = document.getElementById("keepsake-info").offsetHeight + 
-						document.getElementById("selected-urn").offsetHeight;
+						document.getElementById("selected-urn").offsetHeight +
+						document.getElementById("keepsake-list").offsetHeight;
 	window.scrollTo({ top: scrollOffset, behavior: 'smooth' });
 });
 
