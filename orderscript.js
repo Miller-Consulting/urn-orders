@@ -161,7 +161,7 @@ document.getElementById("select-keepsake").addEventListener("click", function(ev
 				if (keepsake) {
 					keepsake.remove();
 					choice[i] = "";
-					window.scrollTo({ top: scrollOffset, behavior: 'smooth' });
+					//window.scrollTo({ top: scrollOffset, behavior: 'smooth' });
 				}
 				if (document.getElementsByClassName("keepsake-row").length == 0) {
 					document.getElementById("keepsake-list").style.display = "none";
@@ -219,10 +219,10 @@ document.getElementById("select-keepsake").addEventListener("click", function(ev
 	document.getElementById("confirm-order").style.display = "none";
 	document.getElementById("complete-order").style.display="block";
 
-	let scrollOffset = document.getElementById("keepsake-info").offsetHeight + 
-						document.getElementById("selected-urn").offsetHeight +
-						document.getElementById("keepsake-list").offsetHeight;
-	window.scrollTo({ top: scrollOffset, behavior: 'smooth' });
+	//let scrollOffset = document.getElementById("keepsake-info").offsetHeight + 
+						//document.getElementById("selected-urn").offsetHeight +
+						//document.getElementById("keepsake-list").offsetHeight;
+	//window.scrollTo({ top: scrollOffset, behavior: 'smooth' });
 });
 
 document.getElementById("complete-order").addEventListener("click", function(){
@@ -279,11 +279,11 @@ document.getElementById("complete-order").addEventListener("click", function(){
 
 	document.getElementById("confirm-order").style.display = "block";
 
-	let scrollOffset = document.getElementById("keepsake-info").offsetHeight + 
-						document.getElementById("selected-urn").offsetHeight +
-						document.getElementById("keepsake-list").offsetHeight +
-						document.getElementById("complete-order").offsetHeight;
-	window.scrollTo({ top: scrollOffset, behavior: 'smooth' });
+	//let scrollOffset = document.getElementById("keepsake-info").offsetHeight + 
+						//document.getElementById("selected-urn").offsetHeight +
+						//document.getElementById("keepsake-list").offsetHeight +
+						//document.getElementById("complete-order").offsetHeight;
+	//window.scrollTo({ top: scrollOffset, behavior: 'smooth' });
 });
 
 //quantity selector
