@@ -19,6 +19,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 33%;
 }
 
 .price, .keepsake-price {
@@ -28,6 +29,7 @@
 
 .urn-row {
   display: flex;
+  justify-content: center;
 }
 
 .urn-name, .keepsake-name {
@@ -38,7 +40,7 @@
 .urn-card, .keepsake-card {
   display: block;
   max-width: 100%;
-  max-height: 100%;
+  max-height: 169px;
   -o-object-fit: contain;
   object-fit: contain;
   cursor: pointer;
@@ -47,7 +49,7 @@
   background-clip: border-box;
   border: 1px solid rgba(0,0,0,0.125);
   border-radius: 0.25rem;
-  width: 1500px;
+  /*width: 1500px;*/
 }
 .urn-card:hover, .keepsake-card:hover {
   box-shadow: 0 0 8px rgba(157, 124, 157, 0.7);
