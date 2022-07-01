@@ -286,6 +286,12 @@ document.getElementById("complete-order").addEventListener("click", function(){
 	//window.scrollTo({ top: scrollOffset, behavior: 'smooth' });
 });
 
+document.getElementById("confirm-order").addEventListener("click", function(){
+	console.log(choice.name);
+	document.getElementsByName("urnName")[0].setAttribute("value", choice.name);
+	document.getElementsByName("price")[0].setAttribute("value", choice.price);
+});
+
 //quantity selector
 let input = document.querySelector('#qty');
 var btnminus = document.querySelector('.minusBtn');

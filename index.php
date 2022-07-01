@@ -27,161 +27,198 @@
 		<div class="message-box" id="urns">
 			<h4>Select an urn by clicking an image below</h4>
 			<div class="urn-list">
-		<?php
-			$servername = "my05.winhost.com";
-			$username = "precious";
-			$password = "Pr3c!ous";
-			$dbname = "mysql_142029_pe";
+				<?php
+					$servername = "my05.winhost.com";
+					$username = "precious";
+					$password = "Pr3c!ous";
+					$dbname = "mysql_142029_pe";
 
-			// Create connection
-			$conn = new mysqli($servername, $username, $password, $dbname);
-			// Check connection
-			if ($conn->connect_error) {
-			  die("Connection failed: " . $conn->connect_error);
-			}
+					// Create connection
+					$conn = new mysqli($servername, $username, $password, $dbname);
+					// Check connection
+					if ($conn->connect_error) {
+					  die("Connection failed: " . $conn->connect_error);
+					}
 
-			$sql = "SELECT * FROM mysql_142029_pe.urns";
-			$result = $conn->query($sql);
-			$rowNumber = 0;
+					$sql = "SELECT * FROM mysql_142029_pe.urns";
+					$result = $conn->query($sql);
+					$rowNumber = 0;
 
-			if ($result->num_rows > 0) {
-			  // output data of each row
-			  while($row = $result->fetch_assoc()) {
-			  	if($rowNumber % 3 == 0) {?>
-			  		<div class="urn-row">
-			  	<?php
-			  	}
-			  ?>
-			  	<div class="urn">
-			  		<img class="urn-card<?php if($rowNumber==0){echo " selected";}?>" src="images\<?php echo $row["imageURL"]?>" alt="<?php echo $row["urnName"]?>"
-			  		data-name="<?php echo $row["urnName"]?>"
-			  		data-price="$<?php echo $row["price"]?>"
-			  		data-desc="<?php echo $row["description"]?>">
-			  		<div class="urn-name"><?php echo $row["urnName"]?></div>
-			  		<div class="price">$<?php echo $row["price"]?></div>
-			  	</div>
-			  <?php
-			  if($rowNumber % 3 == 2) {?>
-			  	</div>
-			  <?php 
-				}
-				$rowNumber++;
-			  }
-			} else {
-			  echo "0 results";
-			}
-			if($rowNumber %3 != 0) {
-				echo "</div>";
-			}
-			$conn->close();
-		?>
+					if ($result->num_rows > 0) {
+					  // output data of each row
+						while($row = $result->fetch_assoc()) {
+					  		if($rowNumber % 3 == 0) {
+				?>
+				<div class="urn-row">
+				<?php
+					}
+				?>
+				<div class="urn">
+					<img class="urn-card<?php if($rowNumber==0){echo " selected";}?>" src="images\<?php echo $row["imageURL"]?>" alt="<?php echo $row["urnName"]?>"
+					data-name="<?php echo $row["urnName"]?>"
+					data-price="$<?php echo $row["price"]?>"
+					data-desc="<?php echo $row["description"]?>">
+					<div class="urn-name"><?php echo $row["urnName"]?></div>
+					<div class="price">$<?php echo $row["price"]?></div>
+				</div>
+				<?php
+					if($rowNumber % 3 == 2) {
+				?>
+				</div>
+				<?php 
+							}
+							$rowNumber++;
+						}
+					} else {
+					  echo "0 results";
+					}
+					if($rowNumber %3 != 0) {
+						echo "</div>";
+					}
+				?>
 			</div>
 		</div>
 		<div class="message-box" id="keepsakes">
 			<h4>Select a keepsake or service item by clicking an image below</h4>
 			<h5>You may select multiple items.</h5>
+			<?php
+				$sql = "SELECT * FROM mysql_142029_pe.keepsakes";
+				$result = $conn->query($sql);
+				$rowNumber = 0;
+
+				if ($result->num_rows > 0) {
+					  // output data of each row
+						while($row = $result->fetch_assoc()) {
+					  		if($rowNumber % 3 == 0) {
+			?>
 			<div class="urn-row">
-				<div class="keepsake">
-					<img class="keepsake-card" src="images\Keepsakes\Sterling_Silver_Oval_Pendant1.jpg" alt="Legacytouch Oval Pendant">
-					<div class="keepsake-name">Legacytouch Oval Pendant</div>
-					<div class="keepsake-price">$240</div>
-				</div>
-				<div class="keepsake">
-					<img class="keepsake-card" src="images\Keepsakes\Sterling_Silver_Offset_Heart_Pendant.jpg" alt="Legacytouch Offset Heart Pendant">
-					<div class="keepsake-name">Legacytouch Offset Heart Pendant</div>
-					<div class="keepsake-price">$240</div>
-				</div>
-				<div class="keepsake">
-					<img class="keepsake-card" src="images\Keepsakes\Sterling_Silver_Vertical_Flat_Bar_Pendant2.jpg" alt="Legacytouch Flat Pendant">
-					<div class="keepsake-name">Legacytouch Flat Pendant</div>
-					<div class="keepsake-price">$195</div>
-				</div>
+			<?php
+				}
+			?>
+			<div class="keepsake">
+				<img class="keepsake-card" src="images\Keepsakes\<?php echo $row["imageURL"]?>" alt="<?php echo $row["keepsakeName"]?>">
+				<div class="keepsake-name"><?php echo $row["keepsakeName"]?></div>
+				<div class="keepsake-price">$<?php echo $row["price"]?></div>
 			</div>
-			<div class="urn-row">
-				<div class="keepsake">
-					<img class="keepsake-card" src="images\Keepsakes\Classic_Style_Cremation_Urn_in_Black_Keepsake_B-1541-K-NB-Black.jpg" alt="Classic Style Cremation Urn in Black - Keepsake (B-1541-K-NB-Black)">
-					<div class="keepsake-name">Classic Style Cremation Urn in Black - Keepsake (B-1541-K-NB-Black)</div>
-					<div class="keepsake-price">$45</div>
-				</div>
-				<div class="keepsake">
-					<img class="keepsake-card" src="images\Keepsakes\Mother_of_Pearl_Cremation_Urn_in_Golden_Brass_Keepsake_B-1518-K-B.jpg" alt="Mother of Pearl Cremation Urn in Golden Brass - Keepsake (B-1518-K-B)">
-					<div class="keepsake-name">Mother of Pearl Cremation Urn in Golden Brass - Keepsake (B-1518-K-B)</div>
-					<div class="keepsake-price">$45</div>
-				</div>
-				<div class="keepsake">
-					<img class="keepsake-card" src="images\Keepsakes\Brass_Cremation_Urn_with_Flowers_Keepsake_B-1500-K-NB-Purple.jpg" alt="Brass Cremation Urn with Flowers - Keepsake (B-1500-K-NB-Purple)">
-					<div class="keepsake-name">Brass Cremation Urn with Flowers - Keepsake (B-1500-K-NB-Purple)</div>
-					<div class="keepsake-price">$45</div>
-				</div>
+			<?php
+				if($rowNumber % 3 == 2) {
+			?>
 			</div>
-			<div class="urn-row">
-				<div class="keepsake">
-					<img class="keepsake-card" src="images\Keepsakes\Elegant_White_Enamel_and_Nickel_Cremation_Urn_Keepsake_B-1528-K-W-NB.jpg" alt="Elegant White Enamel and Nickel Cremation Urn Keepsake (B-1528-K-W-NB)">
-					<div class="keepsake-name">Elegant White Enamel and Nickel Cremation Urn Keepsake (B-1528-K-W-NB)</div>
-					<div class="keepsake-price">$45</div>
+			<?php 
+						}
+						$rowNumber++;
+					} 
+				} else {
+					echo "0 results";
+				}
+				if($rowNumber %3 != 0) {
+					echo "</div>";
+				}
+			?>
+				<!--
+				<div class="urn-row">
+					<div class="keepsake">
+						<img class="keepsake-card" src="images\Keepsakes\Sterling_Silver_Oval_Pendant1.jpg" alt="Legacytouch Oval Pendant">
+						<div class="keepsake-name">Legacytouch Oval Pendant</div>
+						<div class="keepsake-price">$240</div>
+					</div>
+					<div class="keepsake">
+						<img class="keepsake-card" src="images\Keepsakes\Sterling_Silver_Offset_Heart_Pendant.jpg" alt="Legacytouch Offset Heart Pendant">
+						<div class="keepsake-name">Legacytouch Offset Heart Pendant</div>
+						<div class="keepsake-price">$240</div>
+					</div>
+					<div class="keepsake">
+						<img class="keepsake-card" src="images\Keepsakes\Sterling_Silver_Vertical_Flat_Bar_Pendant2.jpg" alt="Legacytouch Flat Pendant">
+						<div class="keepsake-name">Legacytouch Flat Pendant</div>
+						<div class="keepsake-price">$195</div>
+					</div>
 				</div>
-				<div class="keepsake">
-					<img class="keepsake-card" src="images\Keepsakes\Classic_Brass_Cremation_Urn_in_Blue_with_Brass_Bands_Keepsake_B-2291-K.jpg" alt="Classic Brass Cremation Urn in Blue with Brass Bands - Keepsake (B-2291-K)">
-					<div class="keepsake-name">Classic Brass Cremation Urn in Blue with Brass Bands - Keepsake (B-2291-K)</div>
-					<div class="keepsake-price">$45</div>
+				<div class="urn-row">
+					<div class="keepsake">
+						<img class="keepsake-card" src="images\Keepsakes\Classic_Style_Cremation_Urn_in_Black_Keepsake_B-1541-K-NB-Black.jpg" alt="Classic Style Cremation Urn in Black - Keepsake (B-1541-K-NB-Black)">
+						<div class="keepsake-name">Classic Style Cremation Urn in Black - Keepsake (B-1541-K-NB-Black)</div>
+						<div class="keepsake-price">$45</div>
+					</div>
+					<div class="keepsake">
+						<img class="keepsake-card" src="images\Keepsakes\Mother_of_Pearl_Cremation_Urn_in_Golden_Brass_Keepsake_B-1518-K-B.jpg" alt="Mother of Pearl Cremation Urn in Golden Brass - Keepsake (B-1518-K-B)">
+						<div class="keepsake-name">Mother of Pearl Cremation Urn in Golden Brass - Keepsake (B-1518-K-B)</div>
+						<div class="keepsake-price">$45</div>
+					</div>
+					<div class="keepsake">
+						<img class="keepsake-card" src="images\Keepsakes\Brass_Cremation_Urn_with_Flowers_Keepsake_B-1500-K-NB-Purple.jpg" alt="Brass Cremation Urn with Flowers - Keepsake (B-1500-K-NB-Purple)">
+						<div class="keepsake-name">Brass Cremation Urn with Flowers - Keepsake (B-1500-K-NB-Purple)</div>
+						<div class="keepsake-price">$45</div>
+					</div>
 				</div>
-				<div class="keepsake">
-					<img class="keepsake-card" src="images\Keepsakes\Black_and_Golden_Brass_Hand_Etched_Cremation_Urn_Keepsake_B-1570-K-NB.jpg" alt="Black and Golden Brass Hand-Etched Cremation Urn - Keepsake (B-1570-K-NB)">
-					<div class="keepsake-name">Black and Golden Brass Hand-Etched Cremation Urn - Keepsake (B-1570-K-NB)</div>
-					<div class="keepsake-price">$45</div>
+				<div class="urn-row">
+					<div class="keepsake">
+						<img class="keepsake-card" src="images\Keepsakes\Elegant_White_Enamel_and_Nickel_Cremation_Urn_Keepsake_B-1528-K-W-NB.jpg" alt="Elegant White Enamel and Nickel Cremation Urn Keepsake (B-1528-K-W-NB)">
+						<div class="keepsake-name">Elegant White Enamel and Nickel Cremation Urn Keepsake (B-1528-K-W-NB)</div>
+						<div class="keepsake-price">$45</div>
+					</div>
+					<div class="keepsake">
+						<img class="keepsake-card" src="images\Keepsakes\Classic_Brass_Cremation_Urn_in_Blue_with_Brass_Bands_Keepsake_B-2291-K.jpg" alt="Classic Brass Cremation Urn in Blue with Brass Bands - Keepsake (B-2291-K)">
+						<div class="keepsake-name">Classic Brass Cremation Urn in Blue with Brass Bands - Keepsake (B-2291-K)</div>
+						<div class="keepsake-price">$45</div>
+					</div>
+					<div class="keepsake">
+						<img class="keepsake-card" src="images\Keepsakes\Black_and_Golden_Brass_Hand_Etched_Cremation_Urn_Keepsake_B-1570-K-NB.jpg" alt="Black and Golden Brass Hand-Etched Cremation Urn - Keepsake (B-1570-K-NB)">
+						<div class="keepsake-name">Black and Golden Brass Hand-Etched Cremation Urn - Keepsake (B-1570-K-NB)</div>
+						<div class="keepsake-price">$45</div>
+					</div>
 				</div>
-			</div>
-			<div class="urn-row">
-				<div class="keepsake">
-					<img class="keepsake-card" src="images\Keepsakes\Key_Black_Glass_Insert_Keepsake_(J-168).jpg" alt="Key Glass Insert Keepsake (J-168)">
-					<div class="keepsake-name">Key Glass Insert Keepsake (J-168)</div>
-					<div class="keepsake-price">$45</div>
+				<div class="urn-row">
+					<div class="keepsake">
+						<img class="keepsake-card" src="images\Keepsakes\Key_Black_Glass_Insert_Keepsake_(J-168).jpg" alt="Key Glass Insert Keepsake (J-168)">
+						<div class="keepsake-name">Key Glass Insert Keepsake (J-168)</div>
+						<div class="keepsake-price">$45</div>
+					</div>
+					<div class="keepsake">
+						<img class="keepsake-card" src="images\Keepsakes\Birthstone_Bar_January_Garnet_J-083.jpg" alt="Birthstone Pendant (J-083)">
+						<div class="keepsake-name">Birthstone Pendant (J-083)</div>
+						<div class="keepsake-price">$75</div>
+					</div>
+					<div class="keepsake">
+						<img class="keepsake-card" src="images\Keepsakes\Stainless_Steel_Cremation_Urn_Pendant_Cylinder_J-007.jpg" alt="Stainless Steel Cremation Urn Pendant - Cylinder (J-007)">
+						<div class="keepsake-name">Stainless Steel Cremation Urn Pendant - Cylinder (J-007)</div>
+						<div class="keepsake-price">$75</div>
+					</div>
 				</div>
-				<div class="keepsake">
-					<img class="keepsake-card" src="images\Keepsakes\Birthstone_Bar_January_Garnet_J-083.jpg" alt="Birthstone Pendant (J-083)">
-					<div class="keepsake-name">Birthstone Pendant (J-083)</div>
-					<div class="keepsake-price">$75</div>
+				<div class="urn-row">
+					<div class="keepsake">
+						<img class="keepsake-card" src="images\Keepsakes\Stainless_Steel_Cremation_Urn_Pendant_Jesus_on_Cross_J-009-S.jpg" alt="Stainless Steel Cremation Urn Pendant - Jesus on Cross (J-009-S)">
+						<div class="keepsake-name">Stainless Steel Cremation Urn Pendant - Jesus on Cross (J-009-S)</div>
+						<div class="keepsake-price">$65</div>
+					</div>
+					<div class="keepsake">
+						<img class="keepsake-card" src="images\Keepsakes\Stainless_Steel_Cremation_Urn_Pendant_-_Heart_-_Always_in_My_Heart_(J-006).jpg" alt="Stainless Steel Cremation Urn Pendant - Heart - Always in My Heart (J-006)">
+						<div class="keepsake-name">Stainless Steel Cremation Urn Pendant - Heart - Always in My Heart (J-006)</div>
+						<div class="keepsake-price">$65</div>
+					</div>
+					<div class="keepsake">
+						<img class="keepsake-card" src="images\Keepsakes\Silver_Stainless_Steel_Cremation_Urn_Pendant_with_Cord_Heart_v2.jpg" alt="Stainless Steel Cremation Urn Pendant with Cord – Heart">
+						<div class="keepsake-name">Stainless Steel Cremation Urn Pendant with Cord – Heart</div>
+						<div class="keepsake-price">$60</div>
+					</div>
 				</div>
-				<div class="keepsake">
-					<img class="keepsake-card" src="images\Keepsakes\Stainless_Steel_Cremation_Urn_Pendant_Cylinder_J-007.jpg" alt="Stainless Steel Cremation Urn Pendant - Cylinder (J-007)">
-					<div class="keepsake-name">Stainless Steel Cremation Urn Pendant - Cylinder (J-007)</div>
-					<div class="keepsake-price">$75</div>
+				<div class="urn-row">
+					<div class="keepsake">
+						<img class="keepsake-card" src="images\Keepsakes\Stainless_Steel_Cremation_Urn_Pendant_Heart_with_Little_Hearts_J-008.jpg" alt="Stainless Steel Cremation Urn Pendant - Heart with Little Hearts (J-008)">
+						<div class="keepsake-name">Stainless Steel Cremation Urn Pendant - Heart with Little Hearts (J-008)</div>
+						<div class="keepsake-price">$55</div>
+					</div>
+					<div class="keepsake">
+						<img class="keepsake-card" src="images\Keepsakes\Cremation_Urn_Pendant_with_Small_Golden_Heart_Stainless_Steel_J-017.jpg" alt="Cremation Urn Pendant with Small Golden Heart - Stainless Steel (J-017)">
+						<div class="keepsake-name">Cremation Urn Pendant with Small Golden Heart - Stainless Steel (J-017)</div>
+						<div class="keepsake-price">$55</div>
+					</div>
+					<div class="keepsake">
+						<img class="keepsake-card" src="images\Keepsakes\Stainless_Steel_Cremation_Urn_Pendant_with_Chain_US_Air_Force_J-961.jpg" alt="Stainless Steel Cremation Urn Pendant with Chain - US Services (J-961)">
+						<div class="keepsake-name">Stainless Steel Cremation Urn Pendant with Chain - US Services (J-961)</div>
+						<div class="keepsake-price">$45</div>
+					</div>
 				</div>
-			</div>
-			<div class="urn-row">
-				<div class="keepsake">
-					<img class="keepsake-card" src="images\Keepsakes\Stainless_Steel_Cremation_Urn_Pendant_Jesus_on_Cross_J-009-S.jpg" alt="Stainless Steel Cremation Urn Pendant - Jesus on Cross (J-009-S)">
-					<div class="keepsake-name">Stainless Steel Cremation Urn Pendant - Jesus on Cross (J-009-S)</div>
-					<div class="keepsake-price">$65</div>
-				</div>
-				<div class="keepsake">
-					<img class="keepsake-card" src="images\Keepsakes\Stainless_Steel_Cremation_Urn_Pendant_-_Heart_-_Always_in_My_Heart_(J-006).jpg" alt="Stainless Steel Cremation Urn Pendant - Heart - Always in My Heart (J-006)">
-					<div class="keepsake-name">Stainless Steel Cremation Urn Pendant - Heart - Always in My Heart (J-006)</div>
-					<div class="keepsake-price">$65</div>
-				</div>
-				<div class="keepsake">
-					<img class="keepsake-card" src="images\Keepsakes\Silver_Stainless_Steel_Cremation_Urn_Pendant_with_Cord_Heart_v2.jpg" alt="Stainless Steel Cremation Urn Pendant with Cord – Heart">
-					<div class="keepsake-name">Stainless Steel Cremation Urn Pendant with Cord – Heart</div>
-					<div class="keepsake-price">$60</div>
-				</div>
-			</div>
-			<div class="urn-row">
-				<div class="keepsake">
-					<img class="keepsake-card" src="images\Keepsakes\Stainless_Steel_Cremation_Urn_Pendant_Heart_with_Little_Hearts_J-008.jpg" alt="Stainless Steel Cremation Urn Pendant - Heart with Little Hearts (J-008)">
-					<div class="keepsake-name">Stainless Steel Cremation Urn Pendant - Heart with Little Hearts (J-008)</div>
-					<div class="keepsake-price">$55</div>
-				</div>
-				<div class="keepsake">
-					<img class="keepsake-card" src="images\Keepsakes\Cremation_Urn_Pendant_with_Small_Golden_Heart_Stainless_Steel_J-017.jpg" alt="Cremation Urn Pendant with Small Golden Heart - Stainless Steel (J-017)">
-					<div class="keepsake-name">Cremation Urn Pendant with Small Golden Heart - Stainless Steel (J-017)</div>
-					<div class="keepsake-price">$55</div>
-				</div>
-				<div class="keepsake">
-					<img class="keepsake-card" src="images\Keepsakes\Stainless_Steel_Cremation_Urn_Pendant_with_Chain_US_Air_Force_J-961.jpg" alt="Stainless Steel Cremation Urn Pendant with Chain - US Services (J-961)">
-					<div class="keepsake-name">Stainless Steel Cremation Urn Pendant with Chain - US Services (J-961)</div>
-					<div class="keepsake-price">$45</div>
-				</div>
-			</div>
+			-->
 		</div>
 
 		<div id="right-pane">
@@ -215,7 +252,11 @@
 			<a class="btn btn-primary" id="complete-order">COMPLETE</a>
 			<div id="final-order" class="message-box">
 			</div>
-			<a class="btn btn-primary" id="confirm-order">CONFIRM</a>
+			<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+					<input name="urnName" value="" type="hidden">
+					<input name="price" value="" type="hidden">
+					<a class="btn btn-primary" id="confirm-order">CONFIRM</a>
+			</form>
 		</div>
 	</div>
 </div>
